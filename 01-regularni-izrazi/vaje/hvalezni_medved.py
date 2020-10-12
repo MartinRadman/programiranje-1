@@ -1,3 +1,7 @@
+#git remote -v ti pove s čim je povezano
+#git remote add doda dodatno povezavo
+
+import re
 ###############################################################################
 # Hvaležni medved
 #
@@ -25,8 +29,9 @@ medved. Zvrhano zibelko sladkih hrušk mi je prinesel za en sam izdrt trn"."""
 # >>> find_words(test_text, 'de')
 # {'izdere', 'debel', 'oddide', 'začudeno'}
 ###############################################################################
-
-
+def find_words(niz, podniz):
+    mnozica = set(re.findall(f'\\b\\w*?{podniz}\\w*?\\b', niz)) # needle, stack
+    return mnozica
 ###############################################################################
 # 2) Sestavite funkcijo [find_prefix], ki vrne množico vseh besed, ki se
 #    pojavijo v nizu in imajo dano predpono.
@@ -34,8 +39,9 @@ medved. Zvrhano zibelko sladkih hrušk mi je prinesel za en sam izdrt trn"."""
 # >>> find_prefix(test_text, 'zi')
 # {'zibala', 'zibel', 'zibelko'}
 ###############################################################################
-
-
+def find_prefix(niz, predpona):
+    mnozica = set(re.findall(f'\\b{predpona}\\w*', niz))
+    return mnozica
 ###############################################################################
 # 3) Sestavite funkcijo [find_suffix], ki vrne množico vseh besed, ki se
 #    pojavijo v nizu in imajo dano pripono.
@@ -43,8 +49,9 @@ medved. Zvrhano zibelko sladkih hrušk mi je prinesel za en sam izdrt trn"."""
 # >>> find_suffix(test_text, 'la')
 # {'zibala', 'razveselila', 'prestrašila', 'šivala', 'opazila', 'tla'}
 ###############################################################################
-
-
+def find_suffix(niz, pripona):
+    mnozica = set(re.findall(f'\\w*{pripona}\\b', niz))
+    return mnozica
 ###############################################################################
 # 4) Sestavite funkcijo [double_letters], ki sprejme niz in vrne množico vseh
 #    besed, ki vsebujejo podvojene črke.
@@ -52,3 +59,6 @@ medved. Zvrhano zibelko sladkih hrušk mi je prinesel za en sam izdrt trn"."""
 # >>> double_letters('A volunteer is worth twenty pressed men.')
 # {'volunteer', 'pressed'}
 ###############################################################################
+def double_letters(niz):
+    mnozica = set([j[0] for j in re.findall(r'(\b\w*?(\w)\2\w*?\b)', niz)])
+    return mnozica
