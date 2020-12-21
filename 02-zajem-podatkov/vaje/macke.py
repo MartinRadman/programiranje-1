@@ -21,11 +21,11 @@ def download_url_to_string(url):
     """
     try:
         # del kode, ki morda sproži napako
-        page_content = 'TODO'
+        page_content = requests.get(url)
     except 'TODO':
         # koda, ki se izvede pri napaki
         # dovolj je če izpišemo opozorilo in prekinemo izvajanje funkcije
-        raise NotImplementedError()
+        raise Exception('Žal se je nekaj zafuralo, poba.')
     # nadaljujemo s kodo če ni prišlo do napake
     raise NotImplementedError()
 
